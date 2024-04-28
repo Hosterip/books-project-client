@@ -1,13 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import "themes";
 
 html, body { height: 100%; }
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   width: 100%;
-  background: antiquewhite;
+  background: var(--body-background-color);
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+*, *:before, *:after {
+  color: var(--font-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
 }

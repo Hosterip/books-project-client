@@ -1,0 +1,12 @@
+<div class="auth">
+  <div class="wrapper">
+    <auth-login *ngIf="type === 'login'"/>
+    <auth-register *ngIf="type === 'register'"/>
+    <br>
+    <div>
+      <h5 *ngIf="type === 'register'">Already have an account? <a routerLink="/auth/login">Login!</a></h5>
+      <h5 *ngIf="type === 'login'">Don't have an account? <a routerLink="/auth/register">Register one!</a></h5>
+    </div>
+  </div>
+</div>
+
