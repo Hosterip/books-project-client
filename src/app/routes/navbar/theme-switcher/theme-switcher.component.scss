@@ -1,0 +1,46 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: calc(51px + env(safe-area-inset-top, 0));
+  right: env(safe-area-inset-right, 10px);
+  max-height: calc(100vh - 51px - 3px - env(safe-area-inset-top, 0));
+  z-index: 1000;
+  border-radius: 0 0 0 5px;
+  border-width: 0 1px 1px 1px;
+  border-color: var(--border-color);
+  border-style: solid;
+  width: 15%;
+
+  background-color: var(--background-color);
+}
+
+@media (max-width: 500px) {
+  .modal {
+    width: 100%;
+    right: 0;
+    border-radius: 0;
+  }
+}
+
+.overlay {
+  position: fixed;
+  z-index: 500;
+  background-color: rgba(28, 28, 28, 0.5);
+  inset: 50px 0 0 0;
+
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: var(--secondary-background-color);
+}
+
+.fieldset {
+  border: none;
+  display: flex;
+}
