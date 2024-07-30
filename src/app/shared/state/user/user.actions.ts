@@ -1,4 +1,4 @@
-import {createAction, props} from "@ngrx/store";
+import {createAction, createActionGroup, emptyProps, props} from "@ngrx/store";
 import {IUser} from "../../interfaces/IUser";
 
 
@@ -8,7 +8,10 @@ const createUser = createAction(
 )
 const removeUser = createAction('[Auth Page] Create User')
 
-export const userActions = {
-  createUser,
-  removeUser
-}
+export const userActions = createActionGroup({
+  source: "user",
+  events: {
+    'Create User': props<{ user: IUser }>(),
+    'Remove User': emptyProps(),
+  }
+})

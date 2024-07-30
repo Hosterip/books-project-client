@@ -4,7 +4,8 @@ import {ThemeSwitcherComponent} from "./theme-switcher/theme-switcher.component"
 import {RouterLink} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../shared/state/app.state";
-import {selectUserActiveUser} from "../../shared/state/user/user.selectors";
+import {NgIf} from "@angular/common";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -12,14 +13,15 @@ import {selectUserActiveUser} from "../../shared/state/user/user.selectors";
   imports: [
     ButtonComponent,
     ThemeSwitcherComponent,
-    RouterLink
+    RouterLink,
+    NgIf
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private store: Store<AppState>) {
-  }
-  user$ = this.store.select(selectUserActiveUser)
-
+  constructor(
+    public store: Store<AppState>,
+    public authService: AuthService
+  ) {}
 }

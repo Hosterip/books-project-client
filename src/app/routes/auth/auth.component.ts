@@ -2,12 +2,13 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "./auth.service";
 import {authTypes} from "../../shared/constants/authTypes";
 import {IUser} from "../../shared/interfaces/IUser";
 import {Store} from '@ngrx/store';
 import {userActions} from "../../shared/state/user/user.actions";
 import {AppState} from "../../shared/state/app.state";
+import {defaultRedirect} from "../../shared/utils/defaultRedirect";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-auth',
@@ -22,7 +23,7 @@ import {AppState} from "../../shared/state/app.state";
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss'
 })
-export class AuthComponent {
+export class AuthComponent{
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -47,6 +48,7 @@ export class AuthComponent {
     const observerOrNext = {
       next: (res: IUser) => {
         this.store.dispatch(userActions.createUser({user: res}));
+        defaultRedirect(this.router)
       },
       error: (err: any) => {
         console.log(err)

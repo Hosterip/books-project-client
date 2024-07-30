@@ -1,10 +1,19 @@
 <nav class="navbar">
-  <div>
+
+  <div *ngIf="!authService.isAuthorized">
+    <navbar-button routerLink="/books">
+      Books
+    </navbar-button>
     <navbar-button routerLink="/auth/login">
       Login
     </navbar-button>
     <navbar-button routerLink="/auth/register">
       Register
+    </navbar-button>
+  </div>
+  <div *ngIf="authService.isAuthorized">
+    <navbar-button routerLink="/books">
+      Books
     </navbar-button>
   </div>
   <div>

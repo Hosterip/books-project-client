@@ -4,8 +4,9 @@ import {routes} from './app.routes';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {HttpClientModule} from "@angular/common/http";
 import {provideState, provideStore} from "@ngrx/store";
-import {apiUrlInterceptorProvider} from "./shared/API/api-url.interceptor";
 import {userReducer} from "./shared/state/user/user.reducer";
+import {provideStoreDevtools} from "@ngrx/store-devtools";
+import {apiUrlInterceptorProvider} from "./core/interceptors/api-url.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,13 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
-    apiUrlInterceptorProvider
+    apiUrlInterceptorProvider,
+    provideStoreDevtools({
+      maxAge: 25, // Retains last 25 states
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+      trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
+      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+      connectInZone: true // If set to true, the connection is established within the Angular zone
+    }),
   ]
 };

@@ -4,13 +4,26 @@ import {catchError, Observable} from "rxjs";
 import {IUser} from "../../shared/interfaces/IUser";
 import {handleHttpError} from "../../shared/utils/handleHttpError";
 import {getDefaultOptions} from "../../shared/API/getDefaultOptions";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../shared/state/app.state";
+import {selectUserActiveUser} from "../../shared/state/user/user.selectors";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Store<AppState>) { }
+
+  get isAuthorized () {
+    let isAuth: boolean = false
+    this.store.select(selectUserActiveUser).subscribe({
+      next: value => {
+        isAuth = value != null
+      },
+    })
+    return isAuth
+  }
 
   public register (username: string, password: string): Observable<IUser> {
     const options = getDefaultOptions()
