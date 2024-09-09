@@ -2,11 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {BookService} from "../../core/services/book.service";
 import {IBook} from "../../shared/interfaces/IBook";
 import {IPaginated} from "../../shared/interfaces/IPaginated";
+import {BookCardComponent} from "./book-card/book-card.component";
 
 @Component({
   selector: 'app-books',
   standalone: true,
-  imports: [],
+  imports: [
+    BookCardComponent
+  ],
   templateUrl: './books.component.html',
   styleUrl: './books.component.scss'
 })
