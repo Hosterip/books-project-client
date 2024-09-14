@@ -1,9 +1,9 @@
-<div class="book-card">
-  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1170803558l/72193._SX50_SY75_.jpg" alt="">
+<div class="book-card" *ngIf="book">
+  <img [ngSrc]="environment.imageUrl + book.coverName" width="100" height="120" alt="">
   <div class="book-card__content">
-    <h2>Harry Potter</h2>
-    <h5>By Peter</h5>
-    <h5>4.3 avr rating, 4000 ratings</h5>
+    <h2>{{book.title}}</h2>
+    <h5>{{book.author.username}}</h5>
+    <h5>{{book.averageRating}} avr rating, {{book.ratings}} ratings</h5>
   </div>
   <div class="book-card__misc">
 

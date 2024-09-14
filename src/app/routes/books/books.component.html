@@ -1,2 +1,5 @@
 <p>books works!</p>
-<app-book-card/>
+<br>
+<div *ngIf="books">
+  <app-book-card *ngFor="let book of books.items; index as i;" [book]="book"/>
+</div>

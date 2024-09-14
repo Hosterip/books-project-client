@@ -1,3 +1,4 @@
 export interface IEnvironments {
-  apiUrl: string
+  apiUrl: string,
+  imageUrl: string
 }

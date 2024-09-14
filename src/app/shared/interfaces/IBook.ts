@@ -6,7 +6,6 @@ export interface IBook {
   title: string,
   ReferentialName: string,
   description: string,
-  average: string,
   coverName: string,
   averageRating: number,
   ratings: number,
