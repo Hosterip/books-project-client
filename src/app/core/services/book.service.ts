@@ -46,4 +46,54 @@ export class BookService {
     })
       .pipe(catchError(handleHttpError))
   }
+
+  postBook (
+    title: string,
+    description: string,
+    genreIds: string[],
+    cover: File
+  ) {
+    const options = getDefaultOptions();
+    const body = {
+      title,
+      description,
+      genreIds,
+      cover
+    }
+    return this.http.post<IBook>(`books`, body, {
+      ...options
+    })
+      .pipe(catchError(handleHttpError))
+  }
+
+  updateBook (
+    id: string,
+    title: string,
+    description: string,
+    genreIds: string[],
+    cover: File
+  ) {
+    const options = getDefaultOptions();
+    const body = {
+      id,
+      title,
+      description,
+      genreIds,
+      cover
+    }
+    return this.http.put<IBook>(`books`, body, {
+      ...options
+    })
+      .pipe(catchError(handleHttpError))
+  }
+
+  deleteBook (
+    id: string,
+  ) {
+    const options = getDefaultOptions();
+    return this.http.delete<string>(`books/${id}`, {
+      ...options
+    })
+      .pipe(catchError(handleHttpError))
+  }
 }
