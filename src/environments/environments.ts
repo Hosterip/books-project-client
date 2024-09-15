@@ -1,6 +1,6 @@
 import {IEnvironments} from "./IEnvironments";
 
 export const environment: IEnvironments = {
-  apiUrl: 'https://localhost:7190',
-  imageUrl: 'https://localhost:7190/images/',
+  apiUrl: 'http://localhost:7190',
+  imageUrl: 'http://localhost:7190/images/',
 };
