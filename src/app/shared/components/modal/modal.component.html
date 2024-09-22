@@ -1,5 +1,7 @@
-<div [class]="isOpen ? 'overlay' : 'hidden'">
-  <div class="modal">
+<div
+  (click)="toggleIsOpen();"
+  [class]="isOpen ? 'overlay' : 'hidden'">
+  <div (click)="$event.stopPropagation()" class="modal">
     <ng-content/>
   </div>
 </div>
