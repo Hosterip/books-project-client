@@ -1,0 +1,13 @@
+.button {
+  border-radius: 3rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--accent-color);
+  padding: 0.7rem;
+  width: 100%;
+  font-size: 1.5rem;
+
+  &:hover {
+    background-color: var(--background-hover);
+  }
+  transition-duration: 1.5s;
+}
