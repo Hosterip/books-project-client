@@ -1,3 +1,25 @@
-.modal {
-  padding: 5px;
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  &_text {
+    font-size: 15pt;
+  }
+  &_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 8px 12px;
+
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: var(--accent-color);
+    &:hover {
+      background-color: var(--background-hover);
+    }
+    transition-duration: 1.5s;
+  }
 }

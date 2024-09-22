@@ -1,2 +1,9 @@
-<p>big-want-to-read-button works!</p>
-<app-modal [isOpen]="isOpen" class="modal"></app-modal>
+<app-modal [isOpen]="isOpen">
+  <div class="modal_header">
+    <span class="modal_header_text">Choose a shelf for this book</span>
+    <button (click)="toggleIsOpen()" class="modal_header_button">X</button>
+  </div>
+  <app-button>Want to read</app-button>
+  <app-button>Currently reading</app-button>
+  <app-button>Read</app-button>
+</app-modal>
