@@ -1,0 +1,28 @@
+.small-want-to-read-button {
+  position: relative;
+  display: flex;
+  min-width: 100px;
+  border-radius: 5px;
+  & * {
+    white-space: nowrap;
+    border: none;
+    background: var(--accent-color);
+    margin: 0;
+    padding: 3px 5px;
+  }
+  & img {
+    padding: 0;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: -55px;
+  left: 0;
+  right: 0;
+  & .open {
+    display: block;
+  }
+}
