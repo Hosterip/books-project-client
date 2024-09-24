@@ -4,6 +4,9 @@ import {IBook} from "../../shared/interfaces/IBook";
 import {IPaginated} from "../../shared/interfaces/IPaginated";
 import {BookCardComponent} from "./book-card/book-card.component";
 import {NgForOf, NgIf} from "@angular/common";
+import {
+  BigWantToReadButtonComponent
+} from "../../shared/components/big-want-to-read-button/big-want-to-read-button.component";
 
 @Component({
   selector: 'app-books',
@@ -11,7 +14,8 @@ import {NgForOf, NgIf} from "@angular/common";
   imports: [
     BookCardComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    BigWantToReadButtonComponent
   ],
   templateUrl: './books.component.html',
   styleUrl: './books.component.scss'
