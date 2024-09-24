@@ -1,6 +1,6 @@
 <div class="small-want-to-read-button">
   <button>Want to read</button>
-  <button>
+  <button (click)="toggleIsOpen()">
     <img
       ngSrc="https://www.svgrepo.com/show/257744/up-arrow.svg"
       width="15"
@@ -9,8 +9,9 @@
     />
   </button>
 
-  <div class="options open">
-    <button>want to read</button>
-    <button>read</button>
+  <div [class]="isOpen ? 'options open' : 'options'">
+    <button (click)="addToBookshelf(DefaultBookshelfNames.toRead)">Want to read</button>
+    <button (click)="addToBookshelf(DefaultBookshelfNames.currentlyReading)">Currently reading</button>
+    <button (click)="addToBookshelf(DefaultBookshelfNames.read)">Read</button>
   </div>
 </div>

@@ -16,13 +16,21 @@
 }
 
 .options {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
-  bottom: -55px;
+  bottom: -65px;
   left: 0;
   right: 0;
-  & .open {
-    display: block;
+
+  background-color: var(--secondary-background-color) !important;
+  border: 1px solid var(--border-color) !important;
+  & * {
+    font-size: 12px;
+    background-color: var(--secondary-background-color) !important;
+  }
+
+  &.open {
+    display: flex;
   }
 }
