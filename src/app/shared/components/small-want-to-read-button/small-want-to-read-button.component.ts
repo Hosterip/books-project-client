@@ -2,8 +2,6 @@ import {Component, Input} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {BookshelfService} from "../../../core/services/bookshelf.service";
 import {DefaultBookshelfNames} from "../../enums/DefaultBookshelfNames";
-import {IPaginated} from "../../interfaces/IPaginated";
-import {IBook} from "../../interfaces/IBook";
 
 @Component({
   selector: 'app-small-want-to-read-button',
@@ -36,6 +34,4 @@ export class SmallWantToReadButtonComponent {
     this.bookshelfService.AddBookToDefaultBookshelf(bookshelf, this.bookId)
       .subscribe(observerOrNext)
   }
-
-  protected readonly DefaultBookshelfNames = DefaultBookshelfNames;
 }
