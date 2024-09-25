@@ -1,9 +1,37 @@
-<app-modal [isOpen]="isOpen">
+<div class="button-wrapper">
+  <button
+    (click)="addToBookshelf(DefaultBookshelfNames.toRead)"
+    class="button"
+  >
+    Want to read
+  </button>
+  <button (click)="toggleIsOpen()">
+    <img
+      ngSrc="https://www.svgrepo.com/show/257744/up-arrow.svg"
+      width="15"
+      height="15"
+      alt=""
+    />
+  </button>
+</div>
+<app-modal [(isOpen)]="isOpen">
   <div class="modal_header">
     <span class="modal_header_text">Choose a shelf for this book</span>
     <button (click)="toggleIsOpen()" class="modal_header_button">X</button>
   </div>
-  <app-button>Want to read</app-button>
-  <app-button>Currently reading</app-button>
-  <app-button>Read</app-button>
+  <app-button
+    (click)="addToBookshelf(DefaultBookshelfNames.toRead)"
+  >
+    Want to read
+  </app-button>
+  <app-button
+    (click)="addToBookshelf(DefaultBookshelfNames.currentlyReading)"
+  >
+    Currently reading
+  </app-button>
+  <app-button
+    (click)="addToBookshelf(DefaultBookshelfNames.read)"
+  >
+    Read
+  </app-button>
 </app-modal>

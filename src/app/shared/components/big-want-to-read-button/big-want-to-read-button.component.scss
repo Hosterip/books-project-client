@@ -1,3 +1,20 @@
+.button-wrapper {
+  display:inline-flex;
+  justify-content: space-around;
+  background: var(--accent-color);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 130px;
+  & * {
+    background: var(--accent-color);
+    border: none;
+  }
+}
+.button {
+  padding: 7px;
+}
+
 .modal_header {
   display: flex;
   justify-content: space-between;
