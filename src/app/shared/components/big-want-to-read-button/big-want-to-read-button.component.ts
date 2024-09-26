@@ -18,7 +18,7 @@ import {DefaultBookshelfNames} from "../../enums/DefaultBookshelfNames";
 })
 export class BigWantToReadButtonComponent {
   @Input({required: true}) bookId: string = ''
-  public isOpen:boolean = true;
+  public isOpen:boolean = false;
 
   toggleIsOpen() {
     this.isOpen = !this.isOpen;
