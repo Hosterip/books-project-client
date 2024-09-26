@@ -34,4 +34,6 @@ export class SmallWantToReadButtonComponent {
     this.bookshelfService.AddBookToDefaultBookshelf(bookshelf, this.bookId)
       .subscribe(observerOrNext)
   }
+
+  protected readonly DefaultBookshelfNames = DefaultBookshelfNames;
 }

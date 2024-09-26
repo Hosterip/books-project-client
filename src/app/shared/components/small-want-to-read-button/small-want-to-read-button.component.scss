@@ -1,8 +1,8 @@
 .small-want-to-read-button {
-  position: relative;
   display: flex;
   min-width: 100px;
   border-radius: 5px;
+  z-index: 0;
   & * {
     white-space: nowrap;
     border: none;
@@ -19,10 +19,7 @@
   display: none;
   flex-direction: column;
   position: absolute;
-  bottom: -65px;
-  left: 0;
-  right: 0;
-
+  transform: translate(0, 25px);
   background-color: var(--secondary-background-color) !important;
   border: 1px solid var(--border-color) !important;
   & * {
@@ -33,4 +30,9 @@
   &.open {
     display: flex;
   }
+}
+
+.arrow-down {
+  rotate: 180deg;
+  transition-duration: 1s;
 }
