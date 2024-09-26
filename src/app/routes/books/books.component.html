@@ -1,6 +1,3 @@
-<p>books works!</p>
-<br>
-<div *ngIf="books">
+<div class="books-container" *ngIf="books">
   <app-book-card *ngFor="let book of books.items; index as i;" [book]="book"/>
-  <app-big-want-to-read-button/>
 </div>
