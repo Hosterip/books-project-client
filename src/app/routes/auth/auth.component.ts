@@ -9,6 +9,8 @@ import {userActions} from "../../shared/state/user/user.actions";
 import {AppState} from "../../shared/state/app.state";
 import {defaultRedirect} from "../../shared/utils/defaultRedirect";
 import {AuthService} from "../../core/services/auth.service";
+import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 
 @Component({
   selector: 'app-auth',
@@ -19,6 +21,8 @@ import {AuthService} from "../../core/services/auth.service";
     RouterLink,
     FormsModule,
     ReactiveFormsModule,
+    LoginComponent,
+    RegisterComponent,
   ],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss'
@@ -26,40 +30,14 @@ import {AuthService} from "../../core/services/auth.service";
 export class AuthComponent{
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthService,
-    private store: Store<AppState>
+    private router: Router
   ) {
     this.route.params.subscribe(params => {
       this.type = params['type']?.toLowerCase()
       if (this.type == authTypes.login || this.type == authTypes.register) return
       this.router.navigate(['/auth', 'login'])
     });
-    this.authService = authService;
   }
 
   type!: string
-  authFormGroup: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
-  })
-
-  onSubmit() {
-    const observerOrNext = {
-      next: (res: IUser) => {
-        this.store.dispatch(userActions.createUser({user: res}));
-        defaultRedirect(this.router)
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    }
-    if (this.type == authTypes.login) {
-      this.authService.login(this.authFormGroup.value.username, this.authFormGroup.value.password)
-        .subscribe(observerOrNext)
-    } else if (this.type == authTypes.register) {
-      this.authService.register(this.authFormGroup.value.username, this.authFormGroup.value.password)
-        .subscribe(observerOrNext)
-    }
-  }
 }
