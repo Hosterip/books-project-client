@@ -1,14 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {NgIf} from "@angular/common";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {authTypes} from "../../shared/constants/authTypes";
-import {IUser} from "../../shared/interfaces/IUser";
-import {Store} from '@ngrx/store';
-import {userActions} from "../../shared/state/user/user.actions";
-import {AppState} from "../../shared/state/app.state";
-import {defaultRedirect} from "../../shared/utils/defaultRedirect";
-import {AuthService} from "../../core/services/auth.service";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 
@@ -19,13 +12,12 @@ import {RegisterComponent} from "./register/register.component";
     RouterOutlet,
     NgIf,
     RouterLink,
-    FormsModule,
-    ReactiveFormsModule,
     LoginComponent,
     RegisterComponent,
   ],
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+  styleUrl: './auth.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class AuthComponent{
   constructor(
