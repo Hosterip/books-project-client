@@ -25,10 +25,10 @@ export class AuthService {
     return isAuth
   }
 
-  public register (username: string, password: string): Observable<IUser> {
+  public register (email: string, firstName: string, middleName: string, lastName: string, password: string): Observable<IUser> {
     const options = getDefaultOptions()
     const body = {
-      username,
+      username: firstName,
       password
     }
 
