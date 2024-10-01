@@ -7,6 +7,7 @@ import {AuthService} from "../../../core/services/auth.service";
 import {IUser} from "../../../shared/interfaces/IUser";
 import {userActions} from "../../../shared/state/user/user.actions";
 import {defaultRedirect} from "../../../shared/utils/defaultRedirect";
+import {AuthFormComponent} from "../auth-form/auth-form.component";
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ import {defaultRedirect} from "../../../shared/utils/defaultRedirect";
     imports: [
         FormsModule,
         ReactiveFormsModule,
-        RouterLink
+        RouterLink,
+        AuthFormComponent
     ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
@@ -28,7 +30,7 @@ export class RegisterComponent {
 
   registerFormGroup: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    firstName: new FormControl('', [Validators.required, Validators.email]),
+    firstName: new FormControl('', [Validators.required]),
     middleName: new FormControl(''),
     lastName: new FormControl(''),
     password: new FormControl('', [Validators.required])

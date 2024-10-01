@@ -1,0 +1,63 @@
+<fieldset
+    class="form"
+    *ngIf="type == 'login'"
+    [formGroup]="form"
+    name="auth">
+    <label>Email
+        <input
+            type="text"
+            name="auth"
+            formControlName="email"
+            class="auth-input">
+    </label>
+    <label>Password
+        <input
+            type="password"
+            name="auth"
+            formControlName="password"
+            class="auth-input">
+    </label>
+    <button type="submit" class="auth-button">Confirm!</button>
+</fieldset>
+<fieldset
+    class="form"
+    *ngIf="type == 'register'"
+    [formGroup]="form"
+    name="auth">
+    <label>Email
+        <input
+            type="text"
+            name="auth"
+            formControlName="email"
+            class="auth-input">
+    </label>
+    <label>First Name
+        <input
+            type="text"
+            name="auth"
+            formControlName="firstName"
+            class="auth-input">
+    </label>
+    <label>Middle Name
+        <input
+            type="text"
+            name="auth"
+            formControlName="middleName"
+            class="auth-input">
+    </label>
+    <label>Last Name
+        <input
+            type="text"
+            name="auth"
+            formControlName="lastName"
+            class="auth-input">
+    </label>
+    <label>Password
+        <input
+            type="password"
+            name="auth"
+            formControlName="password"
+            class="auth-input">
+    </label>
+    <button type="submit" class="auth-button">Confirm!</button>
+</fieldset>

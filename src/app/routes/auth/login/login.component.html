@@ -1,25 +1,9 @@
 <form
-  [formGroup]="loginFormGroup"
-  (ngSubmit)="onSubmit(); $event.preventDefault()"
-  name="auth"
-  class="auth-form">
-  <label>Email
-    <input
-      type="text"
-      name="auth"
-      formControlName="email"
-      class="auth-input">
-  </label>
-  <label>Password
-    <input
-      type="password"
-      name="auth"
-      formControlName="password"
-      class="auth-input">
-  </label>
-  <button type="submit" class="auth-button">Confirm!</button>
+    class="auth-form"
+    (ngSubmit)="onSubmit(); $event.preventDefault()">
+    <auth-form [onSubmit]="onSubmit" type="login" [form]="loginFormGroup"/>
 </form>
 <br>
 <div>
-  <h5>Don't have an account? <a routerLink="/auth/register">Register one!</a></h5>
+    <h5>Don't have an account? <a routerLink="/auth/register">Register one!</a></h5>
 </div>

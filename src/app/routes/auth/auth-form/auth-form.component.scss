@@ -1,0 +1,10 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    & > *:not(:last-child) {
+        margin-bottom: 10px;
+    }
+    border: none;
+}
