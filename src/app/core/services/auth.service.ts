@@ -36,10 +36,10 @@ export class AuthService {
       .pipe(catchError(handleHttpError))
   }
 
-  public login (username: string, password: string): Observable<IUser> {
+  public login (email: string, password: string): Observable<IUser> {
     const options = getDefaultOptions ()
     const body = {
-      username,
+      email,
       password
     }
 
