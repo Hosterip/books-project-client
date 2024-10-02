@@ -21,7 +21,6 @@ import {NgIf} from "@angular/common";
 })
 export class AuthFormComponent {
     @Input({required: true}) type!: 'register' | 'login';
-    @Input({required: true}) onSubmit!: () => void;
     @Input({required: true}) form!: FormGroup;
 
     ngOnInit(): void {
