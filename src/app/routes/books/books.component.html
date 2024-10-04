@@ -1,3 +1,5 @@
-<div class="books-container" *ngIf="books">
-  <app-book-card *ngFor="let book of books.items; index as i;" [book]="book"/>
+<div class="wrapper">
+    <div class="books-container" *ngIf="books">
+        <app-book-card *ngFor="let book of books.items; index as i;" [book]="book"/>
+    </div>
 </div>
