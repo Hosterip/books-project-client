@@ -9,41 +9,45 @@ import {AppState} from "../../shared/state/app.state";
 import {selectUserActiveUser} from "../../shared/state/user/user.selectors";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private store: Store<AppState>) { }
-
-  get isAuthorized () {
-    let isAuth: boolean = false
-    this.store.select(selectUserActiveUser).subscribe({
-      next: value => {
-        isAuth = value != null
-      },
-    })
-    return isAuth
-  }
-
-  public register (email: string, firstName: string, middleName: string, lastName: string, password: string): Observable<IUser> {
-    const options = getDefaultOptions()
-    const body = {
-      username: firstName,
-      password
+    constructor(private http: HttpClient, private store: Store<AppState>) {
     }
 
-    return this.http.post<IUser>('auth/register', body, options)
-      .pipe(catchError(handleHttpError))
-  }
-
-  public login (email: string, password: string): Observable<IUser> {
-    const options = getDefaultOptions ()
-    const body = {
-      email,
-      password
+    get isAuthorized() {
+        let isAuth: boolean = false
+        this.store.select(selectUserActiveUser).subscribe({
+            next: value => {
+                isAuth = value != null
+            },
+        })
+        return isAuth
     }
 
-    return this.http.post<IUser>('auth/login', body, options)
-      .pipe(catchError(handleHttpError))
-  }
+    public register(email: string, firstName: string, middleName: string, lastName: string, password: string): Observable<IUser> {
+        const options = getDefaultOptions()
+        const body = {
+            email: email,
+            firstName,
+            middleName,
+            lastName,
+            password,
+        }
+
+        return this.http.post<IUser>('auth/register', body, options)
+            .pipe(catchError(handleHttpError))
+    }
+
+    public login(email: string, password: string): Observable<IUser> {
+        const options = getDefaultOptions()
+        const body = {
+            email,
+            password
+        }
+
+        return this.http.post<IUser>('auth/login', body, options)
+            .pipe(catchError(handleHttpError))
+    }
 }
