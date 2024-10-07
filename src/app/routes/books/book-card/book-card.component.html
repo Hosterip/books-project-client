@@ -1,18 +1,22 @@
 <div class="book-card" *ngIf="book">
-  <img
-    class="img"
-    [ngSrc]="environment.imageUrl + book.coverName"
-    width="70"
-    height="100"
-    alt=""
-    priority
-  >
-  <div class="book-card__content">
-    <h2>{{book.title}}</h2>
-    <h5>{{book.author.firstName}} {{book.author.middleName}} {{book.author.lastName}}</h5>
-    <h5>{{book.averageRating}} avr rating, {{book.ratings}} ratings</h5>
-  </div>
-  <div class="book-card__misc">
-    <app-small-want-to-read-button [bookId]="book.id"/>
-  </div>
+    <a
+        class="book-card__link"
+        [routerLink]="'/books/' + book.id">
+        <img
+            class="img"
+            [ngSrc]="environment.imageUrl + book.coverName"
+            width="70"
+            height="100"
+            alt=""
+            priority
+        >
+        <div class="book-card__content">
+            <h2>{{ book.title }}</h2>
+            <h5>{{ book.author.firstName }} {{ book.author.middleName }} {{ book.author.lastName }}</h5>
+            <h5>{{ book.averageRating }} avr rating, {{ book.ratings }} ratings</h5>
+        </div>
+    </a>
+    <div class="book-card__misc">
+        <app-small-want-to-read-button [bookId]="book.id"/>
+    </div>
 </div>

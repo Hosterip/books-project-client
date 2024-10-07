@@ -5,15 +5,17 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 import {
   SmallWantToReadButtonComponent
 } from "../../../shared/components/small-want-to-read-button/small-want-to-read-button.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-book-card',
   standalone: true,
-  imports: [
-    NgOptimizedImage,
-    NgIf,
-    SmallWantToReadButtonComponent
-  ],
+    imports: [
+        NgOptimizedImage,
+        NgIf,
+        SmallWantToReadButtonComponent,
+        RouterLink
+    ],
   templateUrl: './book-card.component.html',
   styleUrl: './book-card.component.scss'
 })
