@@ -5,7 +5,7 @@
   border: 1px solid var(--border-color);
   border-radius: 20px;
   overflow: hidden;
-  min-width: 130px;
+  min-width: 100%;
   & * {
     background: var(--accent-color);
     border: none;

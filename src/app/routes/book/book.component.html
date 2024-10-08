@@ -1,1 +1,25 @@
-<p>book works!</p>
+<div class="wrapper">
+    <div class="content">
+        <div class="left-side">
+            <img
+                class="img"
+                [ngSrc]="environment.imageUrl + book.coverName"
+                width="200"
+                height="300"
+                alt=""
+                priority
+            >
+            <app-big-want-to-read-button [bookId]="book.id"/>
+        </div>
+
+        <div class="main-text">
+            <h2 class="title">
+                {{book.title}}
+            </h2>
+            <br>
+            <p class="description">
+                {{book.description}}
+            </p>
+        </div>
+    </div>
+</div>
