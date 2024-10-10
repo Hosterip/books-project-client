@@ -7,6 +7,7 @@ import {getDefaultOptions} from "../../shared/API/getDefaultOptions";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../shared/state/app.state";
 import {selectUserActiveUser} from "../../shared/state/user/user.selectors";
+import {authEndpoints} from "../../shared/API/Endpoints/authEndpoints";
 
 @Injectable({
     providedIn: 'root'
@@ -36,7 +37,7 @@ export class AuthService {
             password,
         }
 
-        return this.http.post<IUser>('auth/register', body, options)
+        return this.http.post<IUser>(authEndpoints.register, body, options)
             .pipe(catchError(handleHttpError))
     }
 
@@ -47,7 +48,25 @@ export class AuthService {
             password
         }
 
-        return this.http.post<IUser>('auth/login', body, options)
+        return this.http.post<IUser>(authEndpoints.login, body, options)
+            .pipe(catchError(handleHttpError))
+    }
+
+    public logout() {
+        const options = getDefaultOptions()
+
+        return this.http.post<string>(authEndpoints.logout, {}, options)
+            .pipe(catchError(handleHttpError))
+    }
+
+    public changePassword(oldPassword: string, newPassword: string) {
+        const options = getDefaultOptions()
+        const body = {
+            oldPassword,
+            newPassword
+        }
+
+        return this.http.put<string>(authEndpoints.changePassword, body, options)
             .pipe(catchError(handleHttpError))
     }
 }
