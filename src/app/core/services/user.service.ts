@@ -5,6 +5,7 @@ import {catchError} from "rxjs";
 import {handleHttpError} from "../../shared/utils/handleHttpError";
 import {IUser} from "../../shared/interfaces/IUser";
 import {IPaginated} from "../../shared/interfaces/IPaginated";
+import {userEndpoints} from "../../shared/API/Endpoints/userEndpoints";
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,7 @@ export class UserService {
 
     GetCurrentUser() {
         const options = getDefaultOptions();
-        return this.http.get<IUser>(`users`, {
+        return this.http.get<IUser>(userEndpoints.getCurrentUser, {
             ...options
         })
             .pipe(catchError(handleHttpError))
@@ -36,7 +37,7 @@ export class UserService {
         })
         if (query)
             params.append("query", query)
-        return this.http.get<IPaginated<IUser>>('users/many', {
+        return this.http.get<IPaginated<IUser>>(userEndpoints.getMany, {
             ...options,
             params
         })
@@ -46,13 +47,8 @@ export class UserService {
     getSingle(userId: string) {
         const options = getDefaultOptions();
 
-        const params = new HttpParams()
-        params.appendAll({
-            id: userId,
-        })
-        return this.http.get<IUser>('users/single', {
+        return this.http.get<IUser>(userEndpoints.getSingle(userId), {
             ...options,
-            params
         })
             .pipe(catchError(handleHttpError))
     }
@@ -60,7 +56,7 @@ export class UserService {
     deleteUser() {
         const options = getDefaultOptions();
 
-        return this.http.delete<string>('users', {
+        return this.http.delete<string>(userEndpoints.delete, {
             ...options,
         })
             .pipe(catchError(handleHttpError))
@@ -71,7 +67,7 @@ export class UserService {
         const body = {
             email
         }
-        return this.http.put<string>('users/email', body, {
+        return this.http.put<string>(userEndpoints.updateEmail, body, {
             ...options,
         })
             .pipe(catchError(handleHttpError))
@@ -84,7 +80,7 @@ export class UserService {
             middleName,
             lastName
         }
-        return this.http.put<string>('users/name', body, {
+        return this.http.put<string>(userEndpoints.updateName, body, {
             ...options,
         })
             .pipe(catchError(handleHttpError))

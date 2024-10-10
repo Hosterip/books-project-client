@@ -7,6 +7,7 @@ import {handleHttpError} from "../../shared/utils/handleHttpError";
 import {IPaginated} from "../../shared/interfaces/IPaginated";
 import {IBookshelf} from "../../shared/interfaces/IBookshelf";
 import {DefaultBookshelfNames} from "../../shared/enums/DefaultBookshelfNames";
+import {bookshelfEndpoints} from "../../shared/API/Endpoints/bookshelfEndpoint";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class BookshelfService {
 
   GetBookshelves(userId: string) {
     const options = getDefaultOptions();
-    return this.http.get<IBookshelf[]>(`bookshelves/${userId}`,{
+    return this.http.get<IBookshelf[]>(bookshelfEndpoints.getBookshelves(userId),{
       ...options
     })
       .pipe(catchError(handleHttpError))
@@ -28,7 +29,7 @@ export class BookshelfService {
     params.append("page", page);
     params.append("limit", limit);
     const options = getDefaultOptions(params);
-    return this.http.get<IPaginated<IBook>>(`bookshelves/books/${bookshelfId}`, {
+    return this.http.get<IPaginated<IBook>>(bookshelfEndpoints.getBooks(bookshelfId), {
       ...options
     })
       .pipe(catchError(handleHttpError))
@@ -36,7 +37,7 @@ export class BookshelfService {
 
   CreateBookshelf(name: string) {
     const options = getDefaultOptions();
-    return this.http.post<IBookshelf>(`bookshelves/createBookshelf/${name}`,{},{
+    return this.http.post<IBookshelf>(bookshelfEndpoints.createBookshelf(name),{},{
       ...options
     })
       .pipe(catchError(handleHttpError))
@@ -48,7 +49,7 @@ export class BookshelfService {
       bookshelfId,
       bookId
     }
-    return this.http.post<string>(`bookshelves/addBook`, body,{
+    return this.http.post<string>(bookshelfEndpoints.addBook, body,{
       ...options
     })
       .pipe(catchError(handleHttpError))
@@ -60,7 +61,7 @@ export class BookshelfService {
       bookshelfName,
       bookId
     }
-    return this.http.post<string>(`bookshelves/addBookToDefaultBookshelf`, body,{
+    return this.http.post<string>(bookshelfEndpoints.addBookToDefaultBookshelf, body,{
       ...options
     })
       .pipe(catchError(handleHttpError))
@@ -72,7 +73,7 @@ export class BookshelfService {
       bookshelfId,
       bookId
     }
-    return this.http.delete<string>(`bookshelves/removeBook`, {
+    return this.http.delete<string>(bookshelfEndpoints.removeBook, {
       ...options,
       body
     }
@@ -86,7 +87,7 @@ export class BookshelfService {
       bookshelfName,
       bookId
     }
-    return this.http.delete<string>(`bookshelves/removeBookFromDefaultBookshelf`,{
+    return this.http.delete<string>(bookshelfEndpoints.removeBookToDefaultBookshelf,{
       ...options,
       body
     })

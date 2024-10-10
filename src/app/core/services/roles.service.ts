@@ -4,6 +4,7 @@ import {getDefaultOptions} from "../../shared/API/getDefaultOptions";
 import {catchError} from "rxjs";
 import {handleHttpError} from "../../shared/utils/handleHttpError";
 import {IRole} from "../../shared/interfaces/IRole";
+import {roleEndpoints} from "../../shared/API/Endpoints/roleEndpoints";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class RolesService {
     public GetRoles() {
         const options = getDefaultOptions();
 
-        return this.http.get<IRole[]>('roles', {
+        return this.http.get<IRole[]>(roleEndpoints.getRoles, {
             ...options,
         })
             .pipe(catchError(handleHttpError))
@@ -29,7 +30,7 @@ export class RolesService {
             role
         }
 
-        return this.http.put<string>('roles', body,{
+        return this.http.put<string>(roleEndpoints.updateUserRole, body,{
             ...options,
         })
             .pipe(catchError(handleHttpError))

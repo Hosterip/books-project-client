@@ -5,6 +5,7 @@ import {handleHttpError} from "../../shared/utils/handleHttpError";
 import {IBook} from "../../shared/interfaces/IBook";
 import {IPaginated} from "../../shared/interfaces/IPaginated";
 import {getDefaultOptions} from "../../shared/API/getDefaultOptions";
+import {bookEndpoints} from "../../shared/API/Endpoints/bookEndpoints";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class BookService {
       params.append("query", query)
     if(userId)
       params.append("userId", userId)
-    return this.http.get<IPaginated<IBook>>('books/many', {
+    return this.http.get<IPaginated<IBook>>(bookEndpoints.getMany, {
       ...options,
       params
     })
@@ -41,7 +42,7 @@ export class BookService {
   ) {
     const options = getDefaultOptions();
 
-    return this.http.get<IBook>(`books/single/${bookId}`, {
+    return this.http.get<IBook>(bookEndpoints.getSingle(bookId), {
       ...options
     })
       .pipe(catchError(handleHttpError))
@@ -60,13 +61,13 @@ export class BookService {
       genreIds,
       cover
     }
-    return this.http.post<IBook>(`books`, body, {
+    return this.http.post<IBook>(bookEndpoints.postBook, body, {
       ...options
     })
       .pipe(catchError(handleHttpError))
   }
 
-  updateBook (
+  update (
     id: string,
     title: string,
     description: string,
@@ -81,17 +82,17 @@ export class BookService {
       genreIds,
       cover
     }
-    return this.http.put<IBook>(`books`, body, {
+    return this.http.put<IBook>(bookEndpoints.update, body, {
       ...options
     })
       .pipe(catchError(handleHttpError))
   }
 
-  deleteBook (
+  delete (
     id: string,
   ) {
     const options = getDefaultOptions();
-    return this.http.delete<string>(`books/${id}`, {
+    return this.http.delete<string>(bookEndpoints.delete(id), {
       ...options
     })
       .pipe(catchError(handleHttpError))

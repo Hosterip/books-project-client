@@ -4,6 +4,7 @@ import {catchError} from "rxjs";
 import {handleHttpError} from "../../shared/utils/handleHttpError";
 import {HttpClient} from "@angular/common/http";
 import {IGenre} from "../../shared/interfaces/IGenre";
+import {genreEndpoints} from "../../shared/API/Endpoints/genreEndpoints";
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +16,7 @@ export class GenresService {
     public GetGenres() {
         const options = getDefaultOptions();
 
-        return this.http.get<IGenre[]>('genres', {
+        return this.http.get<IGenre[]>(genreEndpoints.getGenres, {
             ...options,
         })
             .pipe(catchError(handleHttpError))
@@ -24,7 +25,7 @@ export class GenresService {
     public PostGenre(genre:string) {
         const options = getDefaultOptions();
 
-        return this.http.post<IGenre>(`genres/${genre}`, {
+        return this.http.post<IGenre>(genreEndpoints.postGenre(genre), {
             ...options,
         })
             .pipe(catchError(handleHttpError))
