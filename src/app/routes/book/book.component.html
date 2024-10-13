@@ -16,10 +16,21 @@
             <h2 class="title">
                 {{book.title}}
             </h2>
-            <br>
+            <h2>{{book.author.firstName}} {{book.author.middleName}} {{book.author.lastName}}</h2>
+            <div>
+                Average Rating {{book.averageRating}} Ratings {{book.ratings}}
+            </div>
             <p class="description">
                 {{book.description}}
             </p>
+            <div class="genres">
+                <p class="genres-title">Genres</p>
+                <div
+                    class="genre"
+                    *ngFor="let genre of book.genres">
+                    {{genre.name}}
+                </div>
+            </div>
         </div>
     </div>
 </div>

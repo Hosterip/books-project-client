@@ -22,7 +22,6 @@ import {RouterLink} from "@angular/router";
 export class BookCardComponent {
   @Input({ required: true }) book: IBook | null = null;
   protected readonly environment = environment;
-  ngOnInit(): void {
-    console.log(this.book?.coverName)
-  }
+
+
 }

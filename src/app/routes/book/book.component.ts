@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {BookService} from "../../core/services/book.service";
 import {IBook} from "../../shared/interfaces/IBook";
 import {environment} from "../../../environments/environments";
-import {NgOptimizedImage} from "@angular/common";
+import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {
     BigWantToReadButtonComponent
 } from "../../shared/components/big-want-to-read-button/big-want-to-read-button.component";
@@ -13,7 +13,8 @@ import {
     standalone: true,
     imports: [
         NgOptimizedImage,
-        BigWantToReadButtonComponent
+        BigWantToReadButtonComponent,
+        NgForOf
     ],
     templateUrl: './book.component.html',
     styleUrl: './book.component.scss'
