@@ -18,7 +18,7 @@ export class ReviewsService {
     }
 
     getMany(
-        bookId: number,
+        bookId: string,
         page: number = 1,
         limit: number = 10,
         query?: string | null,
